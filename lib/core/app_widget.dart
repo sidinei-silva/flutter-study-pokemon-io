@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokemons_io/modules/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -8,7 +9,8 @@ class AppWidget extends StatelessWidget {
       title: "Pokemons_io",
       initialRoute: "/splash",
       routes: {
-        "/splash": (context) => Container(),
+        "/splash": (context) => SplashPage(),
+        "/login": (context) => Container(),
       },
     );
   }

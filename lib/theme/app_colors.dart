@@ -1,3 +1,10 @@
-abstract class AppColors {}
+import 'package:flutter/material.dart';
 
-class AppColorsDefault implements AppColors {}
+abstract class AppColors {
+  Color get titleSplash;
+}
+
+class AppColorsDefault implements AppColors {
+  @override
+  Color get titleSplash => Color(0xFF000000);
+}
