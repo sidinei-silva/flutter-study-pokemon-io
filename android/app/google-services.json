@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "963909533918",
+    "project_id": "desafio-pokemon",
+    "storage_bucket": "desafio-pokemon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963909533918:android:3235ada64845df42d7024f",
+        "android_client_info": {
+          "package_name": "com.example.pokemons_io"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963909533918-scs5caahveehui3gd72mfe2aahg8r3bj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZU7QBb88QtZBDD86xuCczX1E8ZhFFLR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963909533918-scs5caahveehui3gd72mfe2aahg8r3bj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
