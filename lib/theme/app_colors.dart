@@ -11,6 +11,14 @@ abstract class AppColors {
   Color get subtitleLogin;
   Color get labelButtonLogin;
   Color get backgroundButtonLogin;
+
+  // Home Page
+  Color get titleHome;
+
+  //Pokemon Skeleton
+  Color get idSkeletonPokemon;
+  Color get labelSkeletonPokemon;
+
   //App Bar
   Color get iconButtonAdd;
   Color get borderButtonAdd;
@@ -36,6 +44,16 @@ class AppColorsDefault implements AppColors {
 
   @override
   Color get backgroundButtonLogin => Color(0xFFFFFFFF);
+
+  @override
+  Color get titleHome => Color(0xFF000000);
+
+  @override
+  Color get idSkeletonPokemon => Color(0xFFB8B8B8);
+
+  @override
+  Color get labelSkeletonPokemon => Color(0xFFFFFFFF);
+
   @override
   Color get borderButtonAdd => Color(0xFF000000).withOpacity(0.25);
 
