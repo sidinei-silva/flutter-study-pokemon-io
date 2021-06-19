@@ -11,6 +11,18 @@ abstract class AppTextStyles {
   TextStyle get titleLoginBold;
   TextStyle get subtitleLogin;
   TextStyle get labelButtonLogin;
+
+  // Home Page
+  TextStyle get titleHome;
+
+  //Skeleton Pokemon
+  TextStyle get idSkeletonPokemon;
+  TextStyle get labelSkeletonPokemon;
+
+  TextStyle get userName;
+
+  TextStyle get searchHint;
+  TextStyle get searchText;
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -47,5 +59,46 @@ class AppTextStylesDefault implements AppTextStyles {
         fontSize: 23,
         fontWeight: FontWeight.bold,
         color: AppTheme.colors.labelButtonLogin,
+      );
+
+  @override
+  TextStyle get titleHome => GoogleFonts.karla(
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
+        color: AppTheme.colors.titleHome,
+      );
+
+  @override
+  TextStyle get idSkeletonPokemon => GoogleFonts.poppins(
+      fontSize: 8,
+      fontWeight: FontWeight.normal,
+      color: AppTheme.colors.idSkeletonPokemon);
+
+  @override
+  TextStyle get labelSkeletonPokemon => GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.normal,
+        color: AppTheme.colors.labelSkeletonPokemon,
+      );
+
+  @override
+  TextStyle get userName => GoogleFonts.karla(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        color: AppTheme.colors.userName,
+      );
+
+  @override
+  TextStyle get searchHint => GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+        color: AppTheme.colors.searchHint,
+      );
+
+  @override
+  TextStyle get searchText => GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+        color: AppTheme.colors.searchText,
       );
 }

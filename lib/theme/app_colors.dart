@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
+  // Splash Page
   Color get titleSplash;
 
+  Color get appBar;
+
+  // Login Page
   Color get titleLogin;
   Color get subtitleLogin;
   Color get labelButtonLogin;
   Color get backgroundButtonLogin;
+
+  // Home Page
+  Color get titleHome;
+
+  //Pokemon Skeleton
+  Color get idSkeletonPokemon;
+  Color get labelSkeletonPokemon;
+
+  //App Bar
+  Color get iconButtonAdd;
+  Color get borderButtonAdd;
+  Color get userName;
+
+  Color get searchInputBackground;
+  Color get searchHint;
+  Color get searchText;
 }
 
 class AppColorsDefault implements AppColors {
@@ -24,4 +44,34 @@ class AppColorsDefault implements AppColors {
 
   @override
   Color get backgroundButtonLogin => Color(0xFFFFFFFF);
+
+  @override
+  Color get titleHome => Color(0xFF000000);
+
+  @override
+  Color get idSkeletonPokemon => Color(0xFFB8B8B8);
+
+  @override
+  Color get labelSkeletonPokemon => Color(0xFFFFFFFF);
+
+  @override
+  Color get borderButtonAdd => Color(0xFF000000).withOpacity(0.25);
+
+  @override
+  Color get iconButtonAdd => Color(0xFF000000);
+
+  @override
+  Color get userName => Color(0xFF000000);
+
+  @override
+  Color get appBar => Color(0xFFF5DB13);
+
+  @override
+  Color get searchInputBackground => Color(0xFFF2F2F2);
+
+  @override
+  Color get searchHint => Color(0xFF212121).withOpacity(0.7);
+
+  @override
+  Color get searchText => Color(0xFF212121);
 }

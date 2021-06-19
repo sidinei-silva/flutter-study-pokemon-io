@@ -69,7 +69,9 @@ class LoginPage extends StatelessWidget {
                       child: ConstrainedBox(
                         constraints: BoxConstraints.tightFor(height: 60),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(context, "/home");
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: AppTheme.colors.backgroundButtonLogin,
                             shape: RoundedRectangleBorder(
