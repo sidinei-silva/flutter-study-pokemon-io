@@ -11,6 +11,9 @@ abstract class AppTextStyles {
   TextStyle get titleLoginBold;
   TextStyle get subtitleLogin;
   TextStyle get labelButtonLogin;
+
+  TextStyle get searchHint;
+  TextStyle get searchText;
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -47,5 +50,18 @@ class AppTextStylesDefault implements AppTextStyles {
         fontSize: 23,
         fontWeight: FontWeight.bold,
         color: AppTheme.colors.labelButtonLogin,
+      );
+  @override
+  TextStyle get searchHint => GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+        color: AppTheme.colors.searchHint,
+      );
+
+  @override
+  TextStyle get searchText => GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+        color: AppTheme.colors.searchText,
       );
 }
