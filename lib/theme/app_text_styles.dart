@@ -12,6 +12,8 @@ abstract class AppTextStyles {
   TextStyle get subtitleLogin;
   TextStyle get labelButtonLogin;
 
+  TextStyle get userName;
+
   TextStyle get searchHint;
   TextStyle get searchText;
 }
@@ -51,6 +53,13 @@ class AppTextStylesDefault implements AppTextStyles {
         fontWeight: FontWeight.bold,
         color: AppTheme.colors.labelButtonLogin,
       );
+  @override
+  TextStyle get userName => GoogleFonts.karla(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        color: AppTheme.colors.userName,
+      );
+
   @override
   TextStyle get searchHint => GoogleFonts.poppins(
         fontSize: 12,
