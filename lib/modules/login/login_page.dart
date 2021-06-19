@@ -2,10 +2,35 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:pokemons_io/core/app_images.dart';
+import 'package:pokemons_io/modules/login/login_controller.dart';
+import 'package:pokemons_io/modules/login/login_service.dart';
+import 'package:pokemons_io/modules/login/login_state.dart';
 import 'package:pokemons_io/theme/app_theme.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final loginController =
+      LoginController(loginService: LoginServiceImplementation());
+
+  @override
+  void initState() {
+    loginController.listen((state) => {
+          setState(() {
+            if (loginController.loginState is LoginStateSuccess) {
+              final user =
+                  (loginController.loginState as LoginStateSuccess).user;
+              Navigator.pushReplacementNamed(context, "/home", arguments: user);
+            }
+          }),
+        });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,42 +89,49 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                       height: 70,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints.tightFor(height: 60),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, "/home");
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: AppTheme.colors.backgroundButtonLogin,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(11),
+                    if (loginController.loginState is LoginStateLoading) ...[
+                      CircularProgressIndicator(),
+                    ] else if (loginController.loginState
+                        is LoginStateFailure) ...[
+                      Text((loginController.loginState as LoginStateFailure)
+                          .message)
+                    ] else
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints.tightFor(height: 60),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              loginController.googleSignIn();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: AppTheme.colors.backgroundButtonLogin,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(11),
+                              ),
                             ),
-                          ),
-                          child: Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  AppImages.iconGoogle,
-                                  width: 24,
-                                  height: 24,
-                                ),
-                                SizedBox(
-                                  width: 32,
-                                ),
-                                Text(
-                                  "Entrar com Google",
-                                  style: AppTheme.textStyles.labelButtonLogin,
-                                )
-                              ],
+                            child: Container(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    AppImages.iconGoogle,
+                                    width: 24,
+                                    height: 24,
+                                  ),
+                                  SizedBox(
+                                    width: 32,
+                                  ),
+                                  Text(
+                                    "Entrar com Google",
+                                    style: AppTheme.textStyles.labelButtonLogin,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    )
+                      )
                   ],
                 ),
               ),
