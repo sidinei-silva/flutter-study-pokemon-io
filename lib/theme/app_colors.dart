@@ -27,6 +27,10 @@ abstract class AppColors {
   Color get searchInputBackground;
   Color get searchHint;
   Color get searchText;
+
+  Color get iconArrowBack;
+
+  Color get labelCardPokemon;
 }
 
 class AppColorsDefault implements AppColors {
@@ -74,4 +78,10 @@ class AppColorsDefault implements AppColors {
 
   @override
   Color get searchText => Color(0xFF212121);
+
+  @override
+  Color get iconArrowBack => Color(0xFF666666);
+
+  @override
+  Color get labelCardPokemon => Color(0xFFFFFFFF);
 }

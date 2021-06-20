@@ -23,6 +23,9 @@ abstract class AppTextStyles {
 
   TextStyle get searchHint;
   TextStyle get searchText;
+
+  TextStyle idCardPokemon(Color colorPokemon);
+  TextStyle get labelCardPokemon;
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -100,5 +103,19 @@ class AppTextStylesDefault implements AppTextStyles {
         fontSize: 12,
         fontWeight: FontWeight.normal,
         color: AppTheme.colors.searchText,
+      );
+
+  @override
+  TextStyle idCardPokemon(Color colorPokemon) => GoogleFonts.poppins(
+        fontSize: 8,
+        fontWeight: FontWeight.normal,
+        color: colorPokemon,
+      );
+
+  @override
+  TextStyle get labelCardPokemon => GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.normal,
+        color: AppTheme.colors.labelCardPokemon,
       );
 }
