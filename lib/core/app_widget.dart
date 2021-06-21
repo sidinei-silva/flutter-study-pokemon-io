@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokemons_io/modules/home/home_page.dart';
 import 'package:pokemons_io/modules/login/login_page.dart';
+import 'package:pokemons_io/modules/search/search_page.dart';
 import 'package:pokemons_io/modules/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -14,6 +15,7 @@ class AppWidget extends StatelessWidget {
         "/splash": (context) => SplashPage(),
         "/login": (context) => LoginPage(),
         "/home": (context) => HomePage(),
+        "/search": (context) => SearchPage(),
       },
     );
   }
