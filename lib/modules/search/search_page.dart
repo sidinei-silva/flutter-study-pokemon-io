@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:pokemons_io/core/app_images.dart';
+import 'package:pokemons_io/modules/search/search_controller.dart';
+import 'package:pokemons_io/modules/search/search_state.dart';
 import 'package:pokemons_io/shared/widgets/card_pokemon/card_pokemon_widget.dart';
 import 'package:pokemons_io/shared/widgets/search_input_text/search_input_text.dart';
+import 'package:pokemons_io/shared/widgets/skeleton_pokemon/skeleton_pokemon_widget.dart';
 import 'package:pokemons_io/theme/app_theme.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
+
+  @override
+  _SearchPageState createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  final searchController = SearchController();
+
+  @override
+  void initState() {
+    searchController.getPokemons();
+    searchController.listen((state) => {
+          setState(() {}),
+        });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,41 +86,26 @@ class SearchPage extends StatelessWidget {
               crossAxisSpacing: 8,
               mainAxisSpacing: 8,
               children: [
-                CardPokemonWidget(
-                  namePokemon: 'Bulbasaur',
-                  idPokemon: '001',
-                  firstTypePokemon: 'Grass',
-                  urlImagePokemon:
-                      "http://www.serebii.net/pokemongo/pokemon/001.png",
-                ),
-                CardPokemonWidget(
-                  namePokemon: 'Charmander',
-                  idPokemon: '004',
-                  firstTypePokemon: 'Fire',
-                  urlImagePokemon:
-                      "http://www.serebii.net/pokemongo/pokemon/004.png",
-                ),
-                CardPokemonWidget(
-                  namePokemon: 'Squirtle',
-                  idPokemon: '007',
-                  firstTypePokemon: 'Water',
-                  urlImagePokemon:
-                      "http://www.serebii.net/pokemongo/pokemon/007.png",
-                ),
-                CardPokemonWidget(
-                  namePokemon: 'Caterpie',
-                  idPokemon: '010',
-                  firstTypePokemon: 'Bug',
-                  urlImagePokemon:
-                      "http://www.serebii.net/pokemongo/pokemon/010.png",
-                ),
-                CardPokemonWidget(
-                  namePokemon: 'Pikachu',
-                  idPokemon: '025',
-                  firstTypePokemon: 'Electric',
-                  urlImagePokemon:
-                      "http://www.serebii.net/pokemongo/pokemon/025.png",
-                ),
+                if (searchController.searchState is SearchStateLoading) ...[
+                  ...List.generate(
+                    6,
+                    (index) => SkeletonPokemonWidget(),
+                  )
+                ] else if (searchController.searchState
+                    is SearchStateSuccess) ...[
+                  ...(searchController.searchState as SearchStateSuccess)
+                      .pokemons
+                      .map((pokemon) => CardPokemonWidget(
+                            namePokemon: pokemon.name,
+                            idPokemon: pokemon.id,
+                            firstTypePokemon: pokemon.types[0],
+                            urlImagePokemon: pokemon.imageUrl,
+                          ))
+                ] else if (searchController.searchState
+                    is SearchStateFailure) ...[
+                  Text((searchController.searchState as SearchStateFailure)
+                      .message)
+                ]
               ],
             ),
           ),

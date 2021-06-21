@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pokemons_io/shared/widgets/loading_image_pokemon/loading_image_pokemon_widget.dart';
 
 import 'package:pokemons_io/theme/app_theme.dart';
 
 class CardPokemonWidget extends StatelessWidget {
   final String namePokemon;
-  final String idPokemon;
+  final int idPokemon;
   final String firstTypePokemon;
   final String urlImagePokemon;
 
@@ -42,7 +43,7 @@ class CardPokemonWidget extends StatelessWidget {
                 vertical: 4,
               ),
               child: Text(
-                idPokemon.padLeft(3, '0'),
+                idPokemon.toString().padLeft(3, '0'),
                 style: AppTheme.textStyles.idCardPokemon(colorPokemon),
               ),
             ),
@@ -51,9 +52,12 @@ class CardPokemonWidget extends StatelessWidget {
             urlImagePokemon,
             width: 72,
             height: 72,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) return child;
+              return LoadingImagePokemonWidget();
+            },
           ),
           Container(
-            height: 24,
             decoration: BoxDecoration(
               color: colorPokemon,
               borderRadius: BorderRadius.vertical(
