@@ -36,6 +36,9 @@ abstract class AppColors {
   Color get titlePokemonPage;
   Color get idPokemonPage;
   Color get iconBackPokemonPage;
+
+  Color get labelChipType;
+
 }
 
 class AppColorsDefault implements AppColors {
@@ -98,5 +101,8 @@ class AppColorsDefault implements AppColors {
 
   @override
   Color get iconBackPokemonPage => Color(0xFFFFFFFF);
+
+  @override
+  Color get labelChipType => Color(0xFFFFFFFF);
 
 }

@@ -31,6 +31,8 @@ abstract class AppTextStyles {
   TextStyle get titlePokemonPage;
   TextStyle get idPokemonPage;
 
+  TextStyle get labelChipType;
+  TextStyle aboutPokemonPage({required Color color});
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -144,4 +146,12 @@ class AppTextStylesDefault implements AppTextStyles {
         fontWeight: FontWeight.w700,
         color: AppTheme.colors.labelChipType,
       );
+
+  @override
+  TextStyle aboutPokemonPage({required Color color}) => GoogleFonts.poppins(
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+
 }
