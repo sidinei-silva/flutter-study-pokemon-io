@@ -26,6 +26,11 @@ abstract class AppTextStyles {
 
   TextStyle idCardPokemon(Color colorPokemon);
   TextStyle get labelCardPokemon;
+
+  //Pokemon Page
+  TextStyle get titlePokemonPage;
+  TextStyle get idPokemonPage;
+
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -117,5 +122,26 @@ class AppTextStylesDefault implements AppTextStyles {
         fontSize: 10,
         fontWeight: FontWeight.normal,
         color: AppTheme.colors.labelCardPokemon,
+      );
+
+  @override
+  TextStyle get idPokemonPage => GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        color: AppTheme.colors.titlePokemonPage,
+      );
+
+  @override
+  TextStyle get titlePokemonPage => GoogleFonts.poppins(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: AppTheme.colors.titlePokemonPage,
+      );
+
+  @override
+  TextStyle get labelChipType => GoogleFonts.poppins(
+        fontSize: 11,
+        fontWeight: FontWeight.w700,
+        color: AppTheme.colors.labelChipType,
       );
 }

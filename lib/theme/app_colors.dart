@@ -31,6 +31,11 @@ abstract class AppColors {
   Color get iconArrowBack;
 
   Color get labelCardPokemon;
+
+  //Pokemon Page
+  Color get titlePokemonPage;
+  Color get idPokemonPage;
+  Color get iconBackPokemonPage;
 }
 
 class AppColorsDefault implements AppColors {
@@ -84,4 +89,14 @@ class AppColorsDefault implements AppColors {
 
   @override
   Color get labelCardPokemon => Color(0xFFFFFFFF);
+
+  @override
+  Color get titlePokemonPage => Color(0xFFFFFFFF);
+
+  @override
+  Color get idPokemonPage => Color(0xFFFFFFFF);
+
+  @override
+  Color get iconBackPokemonPage => Color(0xFFFFFFFF);
+
 }
