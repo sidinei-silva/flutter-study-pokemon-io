@@ -6,4 +6,6 @@ class AppImages {
   static String get logo => "assets/images/logo.png";
   static String get pokeballTransparent =>
       "assets/images/pokeball_transparent.png";
+  static String get iconBalance => "assets/images/icon_balance.png";
+  static String get iconRuler => "assets/images/icon_ruler.png";
 }

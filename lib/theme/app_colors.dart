@@ -39,6 +39,9 @@ abstract class AppColors {
 
   Color get labelChipType;
 
+  Color get aboutItemTitle;
+
+  Color get aboutItemSubtitle;
 }
 
 class AppColorsDefault implements AppColors {
@@ -105,4 +108,9 @@ class AppColorsDefault implements AppColors {
   @override
   Color get labelChipType => Color(0xFFFFFFFF);
 
+  @override
+  Color get aboutItemTitle => Color(0xFF000000);
+
+  @override
+  Color get aboutItemSubtitle => Color(0xFF666666);
 }

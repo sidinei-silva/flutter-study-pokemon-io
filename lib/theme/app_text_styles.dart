@@ -33,6 +33,10 @@ abstract class AppTextStyles {
 
   TextStyle get labelChipType;
   TextStyle aboutPokemonPage({required Color color});
+
+  TextStyle get aboutItemTitle;
+
+  TextStyle get aboutItemSubtitle;
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -154,4 +158,16 @@ class AppTextStylesDefault implements AppTextStyles {
         color: color,
       );
 
+  @override
+  TextStyle get aboutItemTitle => GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        color: AppTheme.colors.aboutItemTitle,
+      );
+
+  @override
+  TextStyle get aboutItemSubtitle => GoogleFonts.poppins(
+      fontSize: 8,
+      fontWeight: FontWeight.w400,
+      color: AppTheme.colors.aboutItemSubtitle);
 }
