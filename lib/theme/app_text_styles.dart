@@ -37,6 +37,8 @@ abstract class AppTextStyles {
   TextStyle get aboutItemTitle;
 
   TextStyle get aboutItemSubtitle;
+  TextStyle get valueStatistics;
+  TextStyle labelStatistics({required Color color});
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -170,4 +172,18 @@ class AppTextStylesDefault implements AppTextStyles {
       fontSize: 8,
       fontWeight: FontWeight.w400,
       color: AppTheme.colors.aboutItemSubtitle);
+
+  @override
+  TextStyle labelStatistics({required Color color}) => GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+
+  @override
+  TextStyle get valueStatistics => GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        color: AppTheme.colors.valueStatistics,
+      );
 }
