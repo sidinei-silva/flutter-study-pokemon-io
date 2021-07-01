@@ -42,6 +42,7 @@ abstract class AppColors {
   Color get aboutItemTitle;
 
   Color get aboutItemSubtitle;
+  Color get divider;
 }
 
 class AppColorsDefault implements AppColors {
@@ -113,4 +114,7 @@ class AppColorsDefault implements AppColors {
 
   @override
   Color get aboutItemSubtitle => Color(0xFF666666);
+
+  @override
+  Color get divider => Color(0xFFE0E0E0);
 }

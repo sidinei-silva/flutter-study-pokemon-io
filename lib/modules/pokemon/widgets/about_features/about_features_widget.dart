@@ -53,7 +53,7 @@ class AboutFeaturesWidget extends StatelessWidget {
           Container(
             width: 1,
             height: 48,
-            color: Colors.black,
+            color: AppTheme.colors.divider,
           ),
           Column(
             children: [
@@ -85,7 +85,7 @@ class AboutFeaturesWidget extends StatelessWidget {
           Container(
             width: 1,
             height: 48,
-            color: Colors.black,
+            color: AppTheme.colors.divider,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
