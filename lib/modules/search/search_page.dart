@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemons_io/core/app_images.dart';
+import 'package:pokemons_io/modules/pokemon/pokemon_page_args.dart';
 import 'package:pokemons_io/modules/search/search_controller.dart';
 import 'package:pokemons_io/modules/search/search_state.dart';
 import 'package:pokemons_io/shared/widgets/card_pokemon/card_pokemon_widget.dart';
@@ -100,6 +101,16 @@ class _SearchPageState extends State<SearchPage> {
                             idPokemon: pokemon.id,
                             firstTypePokemon: pokemon.types[0],
                             urlImagePokemon: pokemon.imageUrl,
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                "/pokemon",
+                                arguments: PokemonPageArgs(
+                                  idPokemon: pokemon.id,
+                                  added: false,
+                                ),
+                              );
+                            },
                           ))
                 ] else if (searchController.searchState
                     is SearchStateFailure) ...[

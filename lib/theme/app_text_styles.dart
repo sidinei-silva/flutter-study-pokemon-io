@@ -35,8 +35,9 @@ abstract class AppTextStyles {
   TextStyle aboutPokemonPage({required Color color});
 
   TextStyle get aboutItemTitle;
-
   TextStyle get aboutItemSubtitle;
+  TextStyle get aboutDescription;
+
   TextStyle get valueStatistics;
   TextStyle labelStatistics({required Color color});
 
@@ -174,6 +175,14 @@ class AppTextStylesDefault implements AppTextStyles {
       fontSize: 8,
       fontWeight: FontWeight.w400,
       color: AppTheme.colors.aboutItemSubtitle);
+
+  @override
+  TextStyle get aboutDescription => GoogleFonts.poppins(
+        fontSize: 10,
+        height: 1.6,
+        fontWeight: FontWeight.w400,
+        color: AppTheme.colors.aboutDescription,
+      );
 
   @override
   TextStyle labelStatistics({required Color color}) => GoogleFonts.poppins(
