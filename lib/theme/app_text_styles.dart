@@ -39,6 +39,8 @@ abstract class AppTextStyles {
   TextStyle get aboutItemSubtitle;
   TextStyle get valueStatistics;
   TextStyle labelStatistics({required Color color});
+
+  TextStyle get labelButtonPokemon;
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -185,5 +187,12 @@ class AppTextStylesDefault implements AppTextStyles {
         fontSize: 10,
         fontWeight: FontWeight.w400,
         color: AppTheme.colors.valueStatistics,
+      );
+
+  @override
+  TextStyle get labelButtonPokemon => GoogleFonts.poppins(
+        fontSize: 13,
+        fontWeight: FontWeight.bold,
+        color: AppTheme.colors.labelButtonPokemon,
       );
 }

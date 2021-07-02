@@ -46,6 +46,8 @@ abstract class AppColors {
   Color get valueStatistics;
 
   Color get divider;
+
+  Color get labelButtonPokemon;
 }
 
 class AppColorsDefault implements AppColors {
@@ -123,4 +125,7 @@ class AppColorsDefault implements AppColors {
 
   @override
   Color get divider => Color(0xFFE0E0E0);
+
+  @override
+  Color get labelButtonPokemon => Color(0xFF000000);
 }
