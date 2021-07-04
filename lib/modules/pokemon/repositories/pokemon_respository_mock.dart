@@ -1,4 +1,5 @@
 import 'package:pokemons_io/modules/pokemon/models/pokemon_model.dart';
+import 'package:pokemons_io/modules/pokemon/models/pokemon_stats_model.dart';
 import 'package:pokemons_io/modules/pokemon/repositories/interfaces/pokemon_respository_interface.dart';
 
 class PokemonRespositoryMock implements IPokemonRepository {
@@ -22,12 +23,14 @@ class PokemonRespositoryMock implements IPokemonRepository {
       ],
       description:
           "While it is young, it uses the nutrients that are stored in the seeds on its back in order to grow.",
-      hp: 45,
-      attack: 49,
-      defense: 49,
-      specialAttack: 65,
-      specialDefense: 65,
-      speed: 45,
+      stats: PokemonStatsModel(
+        attack: 49,
+        defense: 49,
+        hp: 45,
+        specialAttack: 65,
+        specialDefense: 65,
+        speed: 45,
+      ),
     );
   }
 }

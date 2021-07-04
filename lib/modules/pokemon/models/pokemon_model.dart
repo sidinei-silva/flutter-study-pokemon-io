@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
+import 'package:pokemons_io/modules/pokemon/models/pokemon_stats_model.dart';
+
 class PokemonModel {
   final int id;
   final String name;
@@ -13,13 +15,7 @@ class PokemonModel {
   final List<String> moves;
   final String description;
 
-  final double hp;
-  final double attack;
-  final double defense;
-  final double specialAttack;
-  final double specialDefense;
-  final double speed;
-
+  final PokemonStatsModel stats;
   PokemonModel({
     required this.id,
     required this.name,
@@ -29,12 +25,7 @@ class PokemonModel {
     required this.height,
     required this.moves,
     required this.description,
-    required this.hp,
-    required this.attack,
-    required this.defense,
-    required this.specialAttack,
-    required this.specialDefense,
-    required this.speed,
+    required this.stats,
   });
 
   PokemonModel copyWith({
@@ -46,12 +37,7 @@ class PokemonModel {
     double? height,
     List<String>? moves,
     String? description,
-    double? hp,
-    double? attack,
-    double? defense,
-    double? specialAttack,
-    double? specialDefense,
-    double? speed,
+    PokemonStatsModel? stats,
   }) {
     return PokemonModel(
       id: id ?? this.id,
@@ -62,12 +48,7 @@ class PokemonModel {
       height: height ?? this.height,
       moves: moves ?? this.moves,
       description: description ?? this.description,
-      hp: hp ?? this.hp,
-      attack: attack ?? this.attack,
-      defense: defense ?? this.defense,
-      specialAttack: specialAttack ?? this.specialAttack,
-      specialDefense: specialDefense ?? this.specialDefense,
-      speed: speed ?? this.speed,
+      stats: stats ?? this.stats,
     );
   }
 
@@ -81,12 +62,7 @@ class PokemonModel {
       'height': height,
       'moves': moves,
       'description': description,
-      'hp': hp,
-      'attack': attack,
-      'defense': defense,
-      'specialAttack': specialAttack,
-      'specialDefense': specialDefense,
-      'speed': speed,
+      'stats': stats.toMap(),
     };
   }
 
@@ -100,12 +76,7 @@ class PokemonModel {
       height: map['height'],
       moves: List<String>.from(map['moves']),
       description: map['description'],
-      hp: map['hp'],
-      attack: map['attack'],
-      defense: map['defense'],
-      specialAttack: map['specialAttack'],
-      specialDefense: map['specialDefense'],
-      speed: map['speed'],
+      stats: PokemonStatsModel.fromMap(map['stats']),
     );
   }
 
@@ -116,7 +87,7 @@ class PokemonModel {
 
   @override
   String toString() {
-    return 'PokemonModel(id: $id, name: $name, imageUrl: $imageUrl, types: $types, weight: $weight, height: $height, moves: $moves, description: $description, hp: $hp, attack: $attack, defense: $defense, specialAttack: $specialAttack, specialDefense: $specialDefense, speed: $speed)';
+    return 'PokemonModel(id: $id, name: $name, imageUrl: $imageUrl, types: $types, weight: $weight, height: $height, moves: $moves, description: $description, stats: $stats)';
   }
 
   @override
@@ -132,12 +103,7 @@ class PokemonModel {
         other.height == height &&
         listEquals(other.moves, moves) &&
         other.description == description &&
-        other.hp == hp &&
-        other.attack == attack &&
-        other.defense == defense &&
-        other.specialAttack == specialAttack &&
-        other.specialDefense == specialDefense &&
-        other.speed == speed;
+        other.stats == stats;
   }
 
   @override
@@ -150,11 +116,6 @@ class PokemonModel {
         height.hashCode ^
         moves.hashCode ^
         description.hashCode ^
-        hp.hashCode ^
-        attack.hashCode ^
-        defense.hashCode ^
-        specialAttack.hashCode ^
-        specialDefense.hashCode ^
-        speed.hashCode;
+        stats.hashCode;
   }
 }
