@@ -4,7 +4,7 @@ import 'package:pokemons_io/theme/app_theme.dart';
 
 class PokemonAppBarWidget extends PreferredSize {
   final String namePokemon;
-  final String idPokemon;
+  final int idPokemon;
   final BuildContext context;
 
   PokemonAppBarWidget(
@@ -40,7 +40,7 @@ class PokemonAppBarWidget extends PreferredSize {
                             width: 10,
                           ),
                           Text(
-                            "Pokemon",
+                            namePokemon,
                             style: AppTheme.textStyles.titlePokemonPage,
                           ),
                         ],
@@ -48,7 +48,7 @@ class PokemonAppBarWidget extends PreferredSize {
                       Padding(
                         padding: const EdgeInsets.only(right: 65),
                         child: Text(
-                          "#001",
+                          "#${idPokemon.toString().padLeft(3, '0')}",
                           style: AppTheme.textStyles.idPokemonPage,
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:pokemons_io/core/app_images.dart';
 import 'package:pokemons_io/theme/app_theme.dart';
@@ -95,7 +96,7 @@ class AboutFeaturesWidget extends StatelessWidget {
                 children: [
                   ...moves.map(
                     (move) => Text(
-                      move,
+                      toBeginningOfSentenceCase(move)!,
                       style: AppTheme.textStyles.aboutItemTitle,
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:pokemons_io/theme/app_theme.dart';
 
@@ -16,7 +17,7 @@ class ChipTypeWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
       backgroundColor: AppTheme.pokemonColor.getColorPokemonByType(labelType),
       labelStyle: AppTheme.textStyles.labelChipType,
-      label: Text("${labelType[0].toUpperCase()}${labelType.substring(1)}"),
+      label: Text(toBeginningOfSentenceCase(labelType)!),
     );
   }
 }
