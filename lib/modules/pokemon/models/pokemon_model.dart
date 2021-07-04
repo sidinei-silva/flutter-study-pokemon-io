@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 
 class PokemonModel {
   final int id;
@@ -13,11 +14,11 @@ class PokemonModel {
   final String description;
 
   final double hp;
-  final double atk;
-  final double def;
-  final double satk;
-  final double sdef;
-  final double spd;
+  final double attack;
+  final double defense;
+  final double specialAttack;
+  final double specialDefense;
+  final double speed;
 
   PokemonModel({
     required this.id,
@@ -29,11 +30,11 @@ class PokemonModel {
     required this.moves,
     required this.description,
     required this.hp,
-    required this.atk,
-    required this.def,
-    required this.satk,
-    required this.sdef,
-    required this.spd,
+    required this.attack,
+    required this.defense,
+    required this.specialAttack,
+    required this.specialDefense,
+    required this.speed,
   });
 
   PokemonModel copyWith({
@@ -46,11 +47,11 @@ class PokemonModel {
     List<String>? moves,
     String? description,
     double? hp,
-    double? atk,
-    double? def,
-    double? satk,
-    double? sdef,
-    double? spd,
+    double? attack,
+    double? defense,
+    double? specialAttack,
+    double? specialDefense,
+    double? speed,
   }) {
     return PokemonModel(
       id: id ?? this.id,
@@ -62,11 +63,11 @@ class PokemonModel {
       moves: moves ?? this.moves,
       description: description ?? this.description,
       hp: hp ?? this.hp,
-      atk: atk ?? this.atk,
-      def: def ?? this.def,
-      satk: satk ?? this.satk,
-      sdef: sdef ?? this.sdef,
-      spd: spd ?? this.spd,
+      attack: attack ?? this.attack,
+      defense: defense ?? this.defense,
+      specialAttack: specialAttack ?? this.specialAttack,
+      specialDefense: specialDefense ?? this.specialDefense,
+      speed: speed ?? this.speed,
     );
   }
 
@@ -81,11 +82,11 @@ class PokemonModel {
       'moves': moves,
       'description': description,
       'hp': hp,
-      'atk': atk,
-      'def': def,
-      'satk': satk,
-      'sdef': sdef,
-      'spd': spd,
+      'attack': attack,
+      'defense': defense,
+      'specialAttack': specialAttack,
+      'specialDefense': specialDefense,
+      'speed': speed,
     };
   }
 
@@ -100,11 +101,11 @@ class PokemonModel {
       moves: List<String>.from(map['moves']),
       description: map['description'],
       hp: map['hp'],
-      atk: map['atk'],
-      def: map['def'],
-      satk: map['satk'],
-      sdef: map['sdef'],
-      spd: map['spd'],
+      attack: map['attack'],
+      defense: map['defense'],
+      specialAttack: map['specialAttack'],
+      specialDefense: map['specialDefense'],
+      speed: map['speed'],
     );
   }
 
@@ -115,13 +116,12 @@ class PokemonModel {
 
   @override
   String toString() {
-    return 'PokemonModel(id: $id, name: $name, imageUrl: $imageUrl, types: $types, weight: $weight, height: $height, moves: $moves, description: $description, hp: $hp, atk: $atk, def: $def, satk: $satk, sdef: $sdef, spd: $spd)';
+    return 'PokemonModel(id: $id, name: $name, imageUrl: $imageUrl, types: $types, weight: $weight, height: $height, moves: $moves, description: $description, hp: $hp, attack: $attack, defense: $defense, specialAttack: $specialAttack, specialDefense: $specialDefense, speed: $speed)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    final listEquals = const DeepCollectionEquality().equals;
 
     return other is PokemonModel &&
         other.id == id &&
@@ -133,11 +133,11 @@ class PokemonModel {
         listEquals(other.moves, moves) &&
         other.description == description &&
         other.hp == hp &&
-        other.atk == atk &&
-        other.def == def &&
-        other.satk == satk &&
-        other.sdef == sdef &&
-        other.spd == spd;
+        other.attack == attack &&
+        other.defense == defense &&
+        other.specialAttack == specialAttack &&
+        other.specialDefense == specialDefense &&
+        other.speed == speed;
   }
 
   @override
@@ -151,10 +151,10 @@ class PokemonModel {
         moves.hashCode ^
         description.hashCode ^
         hp.hashCode ^
-        atk.hashCode ^
-        def.hashCode ^
-        satk.hashCode ^
-        sdef.hashCode ^
-        spd.hashCode;
+        attack.hashCode ^
+        defense.hashCode ^
+        specialAttack.hashCode ^
+        specialDefense.hashCode ^
+        speed.hashCode;
   }
 }

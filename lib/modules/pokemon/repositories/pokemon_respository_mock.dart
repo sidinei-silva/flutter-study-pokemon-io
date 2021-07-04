@@ -23,11 +23,11 @@ class PokemonRespositoryMock implements IPokemonRepository {
       description:
           "While it is young, it uses the nutrients that are stored in the seeds on its back in order to grow.",
       hp: 45,
-      atk: 49,
-      def: 49,
-      satk: 65,
-      sdef: 65,
-      spd: 45,
+      attack: 49,
+      defense: 49,
+      specialAttack: 65,
+      specialDefense: 65,
+      speed: 45,
     );
   }
 }
