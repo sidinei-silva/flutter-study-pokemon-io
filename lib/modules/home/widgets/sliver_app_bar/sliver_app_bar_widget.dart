@@ -20,6 +20,8 @@ class SliverAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController textEditController = new TextEditingController();
+
     return SliverAppBar(
       backgroundColor: AppTheme.colors.appBar,
       flexibleSpace: FlexibleSpaceBar(
@@ -64,6 +66,7 @@ class SliverAppBarWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           child: SearchInputText(
+            controller: textEditController,
             hintText: "Buscar meus pokemons",
             onChange: searchOnChange,
           ),

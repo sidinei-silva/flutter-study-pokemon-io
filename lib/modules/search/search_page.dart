@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pokemons_io/core/app_images.dart';
+import 'package:pokemons_io/modules/pokemon/models/pokemon_model.dart';
 import 'package:pokemons_io/modules/pokemon/pokemon_page_args.dart';
 import 'package:pokemons_io/modules/search/search_controller.dart';
 import 'package:pokemons_io/modules/search/search_state.dart';
+import 'package:pokemons_io/shared/models/card_pokemon_model.dart';
 import 'package:pokemons_io/shared/widgets/card_pokemon/card_pokemon_widget.dart';
 import 'package:pokemons_io/shared/widgets/search_input_text/search_input_text.dart';
 import 'package:pokemons_io/shared/widgets/skeleton_pokemon/skeleton_pokemon_widget.dart';
@@ -17,14 +19,41 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   final searchController = SearchController();
+  TextEditingController textEditController = new TextEditingController();
+
+  List<CardPokemonModel> _searchResult = [];
+  List<CardPokemonModel> _pokemons = [];
 
   @override
   void initState() {
     searchController.getPokemons();
     searchController.listen((state) => {
+          if (state is SearchStateSuccess)
+            {
+              _pokemons = (state).pokemons,
+            },
           setState(() {}),
         });
     super.initState();
+  }
+
+  onSearchTextChanged(String text) async {
+    _searchResult.clear();
+    if (text.isEmpty) {
+      setState(() {});
+      return;
+    }
+
+    _pokemons.forEach((pokemon) {
+      if ((pokemon.name.toLowerCase()).contains(
+            text.toLowerCase(),
+          ) ||
+          (pokemon.id.toString().toLowerCase().padLeft(3, '0')).contains(
+            text.toLowerCase(),
+          )) _searchResult.add(pokemon);
+    });
+
+    setState(() {});
   }
 
   @override
@@ -71,7 +100,8 @@ class _SearchPageState extends State<SearchPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: SearchInputText(
-              onChange: (value) {},
+              controller: textEditController,
+              onChange: onSearchTextChanged,
               hintText: "Buscar Pokemon...",
             ),
           ),
@@ -94,9 +124,30 @@ class _SearchPageState extends State<SearchPage> {
                   )
                 ] else if (searchController.searchState
                     is SearchStateSuccess) ...[
-                  ...(searchController.searchState as SearchStateSuccess)
-                      .pokemons
-                      .map((pokemon) => CardPokemonWidget(
+                  if (textEditController.text.isNotEmpty) ...[
+                    ..._searchResult.map(
+                      (pokemon) => CardPokemonWidget(
+                        namePokemon: pokemon.name,
+                        idPokemon: pokemon.id,
+                        firstTypePokemon: pokemon.types[0],
+                        urlImagePokemon: pokemon.imageUrl,
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            "/pokemon",
+                            arguments: PokemonPageArgs(
+                              idPokemon: pokemon.id,
+                              added: false,
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                  ] else ...[
+                    ...(searchController.searchState as SearchStateSuccess)
+                        .pokemons
+                        .map(
+                          (pokemon) => CardPokemonWidget(
                             namePokemon: pokemon.name,
                             idPokemon: pokemon.id,
                             firstTypePokemon: pokemon.types[0],
@@ -111,7 +162,9 @@ class _SearchPageState extends State<SearchPage> {
                                 ),
                               );
                             },
-                          ))
+                          ),
+                        )
+                  ]
                 ] else if (searchController.searchState
                     is SearchStateFailure) ...[
                   Text((searchController.searchState as SearchStateFailure)
