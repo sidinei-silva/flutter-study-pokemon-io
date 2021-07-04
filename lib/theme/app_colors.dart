@@ -31,6 +31,25 @@ abstract class AppColors {
   Color get iconArrowBack;
 
   Color get labelCardPokemon;
+
+  //Pokemon Page
+  Color get titlePokemonPage;
+  Color get idPokemonPage;
+  Color get iconBackPokemonPage;
+
+  Color get labelChipType;
+
+  Color get aboutItemTitle;
+
+  Color get aboutItemSubtitle;
+
+  Color get aboutDescription;
+
+  Color get valueStatistics;
+
+  Color get divider;
+
+  Color get labelButtonPokemon;
 }
 
 class AppColorsDefault implements AppColors {
@@ -84,4 +103,34 @@ class AppColorsDefault implements AppColors {
 
   @override
   Color get labelCardPokemon => Color(0xFFFFFFFF);
+
+  @override
+  Color get titlePokemonPage => Color(0xFFFFFFFF);
+
+  @override
+  Color get idPokemonPage => Color(0xFFFFFFFF);
+
+  @override
+  Color get iconBackPokemonPage => Color(0xFFFFFFFF);
+
+  @override
+  Color get labelChipType => Color(0xFFFFFFFF);
+
+  @override
+  Color get aboutItemTitle => Color(0xFF000000);
+
+  @override
+  Color get aboutItemSubtitle => Color(0xFF666666);
+
+  @override
+  Color get aboutDescription => Color(0xFF000000);
+
+  @override
+  Color get valueStatistics => Color(0xFF000000);
+
+  @override
+  Color get divider => Color(0xFFE0E0E0);
+
+  @override
+  Color get labelButtonPokemon => Color(0xFF000000);
 }

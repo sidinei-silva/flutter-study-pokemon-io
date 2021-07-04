@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         slivers: [
           SliverAppBarWidget(
             userUrlPhoto:
-                "https://instagram.fpnz6-1.fna.fbcdn.net/v/t51.2885-19/s150x150/119221655_2414577382180223_3861067324090948992_n.jpg?tp=1&_nc_ht=instagram.fpnz6-1.fna.fbcdn.net&_nc_ohc=s0gjSFI-zRcAX_4ZMZi&edm=ABfd0MgBAAAA&ccb=7-4&oh=4f747b026a4635243ee6c5b1c3091a4b&oe=60D417B9&_nc_sid=7bff83",
+                "https://gibao.com.br/wp-content/uploads/2018/11/blog-ph.jpg",
             userName: "Sidinei Silva",
             buttonAddOnTap: () {
               Navigator.pushNamed(context, "/search");

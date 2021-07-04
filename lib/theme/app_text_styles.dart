@@ -26,6 +26,22 @@ abstract class AppTextStyles {
 
   TextStyle idCardPokemon(Color colorPokemon);
   TextStyle get labelCardPokemon;
+
+  //Pokemon Page
+  TextStyle get titlePokemonPage;
+  TextStyle get idPokemonPage;
+
+  TextStyle get labelChipType;
+  TextStyle aboutPokemonPage({required Color color});
+
+  TextStyle get aboutItemTitle;
+  TextStyle get aboutItemSubtitle;
+  TextStyle get aboutDescription;
+
+  TextStyle get valueStatistics;
+  TextStyle labelStatistics({required Color color});
+
+  TextStyle get labelButtonPokemon;
 }
 
 class AppTextStylesDefault implements AppTextStyles {
@@ -117,5 +133,75 @@ class AppTextStylesDefault implements AppTextStyles {
         fontSize: 10,
         fontWeight: FontWeight.normal,
         color: AppTheme.colors.labelCardPokemon,
+      );
+
+  @override
+  TextStyle get idPokemonPage => GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        color: AppTheme.colors.titlePokemonPage,
+      );
+
+  @override
+  TextStyle get titlePokemonPage => GoogleFonts.poppins(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: AppTheme.colors.titlePokemonPage,
+      );
+
+  @override
+  TextStyle get labelChipType => GoogleFonts.poppins(
+        fontSize: 11,
+        fontWeight: FontWeight.w700,
+        color: AppTheme.colors.labelChipType,
+      );
+
+  @override
+  TextStyle aboutPokemonPage({required Color color}) => GoogleFonts.poppins(
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+
+  @override
+  TextStyle get aboutItemTitle => GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        color: AppTheme.colors.aboutItemTitle,
+      );
+
+  @override
+  TextStyle get aboutItemSubtitle => GoogleFonts.poppins(
+      fontSize: 8,
+      fontWeight: FontWeight.w400,
+      color: AppTheme.colors.aboutItemSubtitle);
+
+  @override
+  TextStyle get aboutDescription => GoogleFonts.poppins(
+        fontSize: 10,
+        height: 1.6,
+        fontWeight: FontWeight.w400,
+        color: AppTheme.colors.aboutDescription,
+      );
+
+  @override
+  TextStyle labelStatistics({required Color color}) => GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.w700,
+        color: color,
+      );
+
+  @override
+  TextStyle get valueStatistics => GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        color: AppTheme.colors.valueStatistics,
+      );
+
+  @override
+  TextStyle get labelButtonPokemon => GoogleFonts.poppins(
+        fontSize: 13,
+        fontWeight: FontWeight.bold,
+        color: AppTheme.colors.labelButtonPokemon,
       );
 }
