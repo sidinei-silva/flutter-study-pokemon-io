@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+
+import 'package:pokemons_io/modules/pokemon/models/pokemon_stats_model.dart';
 import 'package:pokemons_io/modules/pokemon/widgets/statistics/widgets/statistics_value_bar/statistics_value_bar_widget.dart';
 import 'package:pokemons_io/theme/app_theme.dart';
 
 class StatisticsWidget extends StatelessWidget {
   final Color color;
+  final PokemonStatsModel stats;
 
   const StatisticsWidget({
     Key? key,
     required this.color,
+    required this.stats,
   }) : super(key: key);
 
   @override
@@ -63,12 +67,14 @@ class StatisticsWidget extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                StatisticsValueBarWidget(color: color, value: 45),
-                StatisticsValueBarWidget(color: color, value: 49),
-                StatisticsValueBarWidget(color: color, value: 49),
-                StatisticsValueBarWidget(color: color, value: 65),
-                StatisticsValueBarWidget(color: color, value: 65),
-                StatisticsValueBarWidget(color: color, value: 45),
+                StatisticsValueBarWidget(color: color, value: stats.hp),
+                StatisticsValueBarWidget(color: color, value: stats.attack),
+                StatisticsValueBarWidget(color: color, value: stats.defense),
+                StatisticsValueBarWidget(
+                    color: color, value: stats.specialAttack),
+                StatisticsValueBarWidget(
+                    color: color, value: stats.specialDefense),
+                StatisticsValueBarWidget(color: color, value: stats.speed),
               ],
             ),
           )

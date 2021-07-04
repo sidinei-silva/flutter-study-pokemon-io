@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pokemons_io/modules/pokemon/pokemon_controller.dart';
+import 'package:pokemons_io/modules/pokemon/pokemon_page_args.dart';
 import 'package:pokemons_io/modules/pokemon/pokemon_state.dart';
 import 'package:pokemons_io/modules/pokemon/widgets/about_features/about_features_widget.dart';
 import 'package:pokemons_io/modules/pokemon/widgets/button_pokemon/button_pokemon_widget.dart';
@@ -22,7 +23,15 @@ class _PokemonPageState extends State<PokemonPage> {
 
   @override
   void initState() {
-    pokemonController.getPokemon(1);
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      if (ModalRoute.of(context)!.settings.arguments != null) {
+        final argsPage =
+            ModalRoute.of(context)!.settings.arguments as PokemonPageArgs;
+
+        pokemonController.getPokemon(argsPage.idPokemon);
+      }
+    });
+
     pokemonController.listen((state) => {
           setState(() {}),
         });
@@ -50,12 +59,14 @@ class _PokemonPageState extends State<PokemonPage> {
       case PokemonStateSuccess:
         final pokemon =
             (pokemonController.pokemonState as PokemonStateSuccess).pokemon;
-
         final colorPokemon =
             AppTheme.pokemonColor.getColorPokemonByType(pokemon.types.first);
 
+        final argsPage =
+            ModalRoute.of(context)!.settings.arguments as PokemonPageArgs;
+
         return Scaffold(
-          backgroundColor: Color(0xFF74CB48),
+          backgroundColor: colorPokemon,
           appBar: PokemonAppBarWidget(
             namePokemon: toBeginningOfSentenceCase(pokemon.name)!,
             idPokemon: pokemon.id,
@@ -102,8 +113,8 @@ class _PokemonPageState extends State<PokemonPage> {
                                 ),
                               ),
                               AboutFeaturesWidget(
-                                height: 7,
-                                weight: 69,
+                                height: pokemon.height,
+                                weight: pokemon.weight,
                                 moves: pokemon.moves,
                               ),
                               Padding(
@@ -128,6 +139,7 @@ class _PokemonPageState extends State<PokemonPage> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: StatisticsWidget(
                                   color: colorPokemon,
+                                  stats: pokemon.stats,
                                 ),
                               ),
                               SizedBox(
